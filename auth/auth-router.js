@@ -2,7 +2,7 @@ const router = require('express').Router();
 const db = require('./auth-helpers')
 const bcryptjs = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-require('dotenv').config()
+require('dotenv').config();
 
 //token
 function createToken(user) {
