@@ -14,6 +14,10 @@ const getAllTeachers = () => {
 const getAllStudents = () => {
     return db('student')
 }
+const getById = (id) => {
+    return db('student')
+    .where({id})
+}
 //END OF GETS ONLY
 
 //POSTS ONLY
@@ -33,5 +37,6 @@ module.exports = {
     getAllTeachers,
     getAllStudents,
     addStudent,
-    addDate
+    addDate,
+    getById
 }

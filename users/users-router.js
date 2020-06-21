@@ -34,6 +34,22 @@ router.get('/students', (req,res) => {
         res.status(500).json({message: "We are sorry, internal server error!"})
     })
 })
+
+router.get('/students/:id', (req,res) => {
+    const id = req.params.id;
+    db.getById(id)
+    .then(student => {
+        if(student.length > 0){
+            res.status(200).json(student)
+        } else {
+            res.status(404).json({message: "there is no such student.."})
+        }
+    })
+    .catch(error => {
+        console.log("error geting students", error);
+        res.status(500).json({message: "We are sorry, internal server error!"})
+    })
+})
 //END OF GETS ONLY
 
 //POSTS

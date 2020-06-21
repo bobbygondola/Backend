@@ -1,5 +1,5 @@
 // Update with your config settings.
-
+//  !!!!!!!!!!!//////////////////////!!!!!!!!!!!!!!!!!!!!!!!!!!WORK ON THIS TO GET IT PREPPED FOR DEPLOYMENT!!!
 module.exports = {
 
   development: {

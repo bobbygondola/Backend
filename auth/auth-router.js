@@ -1,6 +1,21 @@
 const router = require('express').Router();
 const db = require('./auth-helpers')
 const bcryptjs = require("bcryptjs");
+const jwt = require("jsonwebtoken");
+
+//token
+function createToken(user) {
+  const payload = {
+    subject: user.id,
+    username: user.username,
+    department: user.department,
+  };
+  const secret = process.env.JWT_SECRET || "Neuralink";
+  const options = {
+    expiresIn: "2d",
+  };
+  return jwt.sign(payload, secret, options);
+}
 
 //register a teacher to manage students
 router.post("/register", (req, res) => {
@@ -17,18 +32,21 @@ router.post("/register", (req, res) => {
       })
   });
 
-  //login as a teacher to manage students
+  //login as a teacher to manage students //NEED JWT
   router.post("/login", (req, res) => {
     const { username, password } = req.body;
     // verify user password
     db.login({ username })
       .then(([user]) => {
           if (user && bcryptjs.compareSync(password, user.password)) {
+              const token = createToken(user);
               req.session.user = user;
             res.status(200)
             .json({
                 message: `Welcome Professor ${user.username}`,
-                session: req.session});
+                session: req.session,
+                token
+              });
           } else {
               res.status(401).json({message: "Please Provide Correct Credentials"})
           }
