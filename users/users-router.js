@@ -79,4 +79,31 @@ router.post('/dates', (req,res) => {
     })
 })
 
+//DELETES
+router.delete('/dates/:id', (req,res) => {
+    const id = req.params.id;
+    db.deleteDate(id)
+    .then(deleted => {
+        console.log("date deleted", deleted)
+        res.status(204).json({message: "Sucessfully Deleted Appt."})
+    })
+    .catch(error => {
+        console.log("error deleting date", error);
+        res.status(500).json({message: "We are sorry, internal server error!"})
+    })
+})
+
+router.delete('/students/:id', (req,res) => { //deletes student and all dates appt to
+    const id = req.params.id;
+    db.deleteStudent(id)
+    .then(deleted => {
+        console.log("student deleted", deleted)
+        res.status(204).json({message: "Sucessfully Deleted Student."})
+    })
+    .catch(error => {
+        console.log("error deleting student", error);
+        res.status(500).json({message: "We are sorry, internal server error!"})
+    })
+})
+
 module.exports=router;
