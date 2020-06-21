@@ -2,6 +2,7 @@ const router = require('express').Router();
 const db = require('./auth-helpers')
 const bcryptjs = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+require('dotenv').config()
 
 //token
 function createToken(user) {
@@ -20,7 +21,7 @@ function createToken(user) {
 //register a teacher to manage students
 router.post("/register", (req, res) => {
     const { username, password, department } = req.body;
-    const rounds = process.env.HASH_ROUNDS || 8;
+    const rounds =13;
     const hash = bcryptjs.hashSync(password, rounds);
     db.register({ username, password: hash, department })
       .then(([user]) => {

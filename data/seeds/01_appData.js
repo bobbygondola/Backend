@@ -9,7 +9,7 @@ exports.seed = function(knex) {
       ])
       .then(function () {
         return knex('student').insert([
-          {name:'Elon', class: 'software'}
+          {name:'Elon', email:"elonmusk@gmail.com", class: 'software'}
         ])
       })
       .then(function () {

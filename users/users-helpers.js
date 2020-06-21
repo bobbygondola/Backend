@@ -31,6 +31,17 @@ const addDate = (details) => {
     .insert(details)
     .orderBy("id")
 }
+//DELETES ONLY
+const deleteDate = (id) => {
+    return db('date')
+    .where({id})
+    .del()
+}
+const deleteStudent = (id) => {
+    return db("student")
+    .where({id})
+    .del()
+}
 
 module.exports = {
     getAllDates,
@@ -38,5 +49,7 @@ module.exports = {
     getAllStudents,
     addStudent,
     addDate,
-    getById
+    getById,
+    deleteDate,
+    deleteStudent
 }
