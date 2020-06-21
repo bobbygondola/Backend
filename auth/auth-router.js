@@ -37,4 +37,19 @@ router.post("/register", (req, res) => {
       .catch(err => res.send(err));
   });
 
+  //logout from teacher
+  router.delete('/logout', (req,res) => {
+    if (req.session) {
+        req.session.destroy((error) => {
+          if (error) {
+            res.status(500).json({ message: "Hmm.. Try again.." });
+          } else {
+            res.status(204).end();
+          }
+        });
+      } else {
+        res.status(204).end();
+      }
+  })
+
 module.exports=router;

@@ -2,9 +2,10 @@ const express = require('express');
 const helmet = require('helmet');
 const server = express();
 const morgan = require('morgan');
-const userRouter = require('./users/users-router')
-const authRouter = require('./auth/auth-router')
-const dbConnection = require('./data/db-config')
+const userRouter = require('./users/users-router');
+const authRouter = require('./auth/auth-router');
+const dbConnection = require('./data/db-config');
+const authenticate = require('./auth/requires-auth');
 
 server.use(express.json());
 server.use(morgan());
@@ -32,7 +33,7 @@ const sessionConfig = {
   server.use(session(sessionConfig))
 
 //for teacher/student/appts use
-server.use('/api/users', userRouter);
+server.use('/api/users', authenticate, userRouter);
 // for register/login/logout use
 server.use('/api/auth', authRouter)
 
