@@ -18,7 +18,8 @@ __________________________________________________________
 
 # .post Endpoints
 /students.. name:[], email:[], class:[] --required
-/dates..    date:[], time:[], desc:[], student_id:[], teacher_id:[] --required
+/dates..    date:[], time:[], desc:[], student_id:[], teacher_id:[] --required 
+**--please only add student_id and teacher_id not names yet..**
 
 # .delete Endpoints
 /dates/:id.. DELETES APPOINTMENT CARD
