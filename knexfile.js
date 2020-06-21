@@ -1,7 +1,4 @@
 // Update with your config settings.
-
-const pgConnection = process.env.DATABASE_URL || "postgresql://postgres@localhost/BetterProfessor";
-
 module.exports = {
 
   development: {
@@ -25,7 +22,7 @@ module.exports = {
 
   production: {
     client: "pg",
-    connection: pgConnection,
+    connection: process.env.DATABASE_URL,
       pool: {
         min: 2,
         max: 10,
