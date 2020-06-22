@@ -1,6 +1,6 @@
-const knex = require('knex')
+var knex = require('knex');
 const knexConfig = require('../knexfile');
-
+// const environment = process.env.ENVIRONMENT;
 module.exports = knex(knexConfig.development);
 
 //connection to Database FOR PG ADMIN
