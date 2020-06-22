@@ -1,7 +1,6 @@
 # Backend
 Repository for Backend
 This is the backend for ios and web, have fun any questions msg me!
-
 ## WELCOME!
 # This is the backend for the BetterProfessor App!
 # The required data is what needs to be inputed, or crucial information. 
