@@ -14,7 +14,6 @@ module.exports = {
     },
     pool: {
       afterCreate: (conn, done) => {
-        //runs after onnection with DB is made
         conn.run('PRAGMA foreign_keys = ON', done)
       },
   },
