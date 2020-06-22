@@ -7,7 +7,7 @@ module.exports = {
     client: 'sqlite3',
     useNullAsDefault: true,
     connection: {
-      filename: './BetterProfessor.sqlite3'
+      filename: './BetterProfessor.db3'
     },
     migrations: {
       directory: './data/migrations'
