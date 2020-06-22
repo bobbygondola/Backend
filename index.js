@@ -1,3 +1,5 @@
+// const knex = require('knex')('production')
+// require('dotenv').config()
 const server = require('./server.js');
 const PORT = process.env.PORT || 8001;
 server.listen(PORT, () => {

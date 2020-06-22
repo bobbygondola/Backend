@@ -1,3 +1,4 @@
+
 const express = require('express');
 const helmet = require('helmet');
 const server = express();
@@ -6,7 +7,6 @@ const userRouter = require('./users/users-router');
 const authRouter = require('./auth/auth-router');
 const dbConnection = require('./data/db-config');
 const authenticate = require('./auth/requires-auth');
-require('dotenv').config()
 
 server.use(express.json());
 server.use(morgan());
