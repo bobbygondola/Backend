@@ -3,6 +3,7 @@ const express = require('express');
 const helmet = require('helmet');
 const server = express();
 const morgan = require('morgan');
+const cors = require('cors')
 const userRouter = require('./users/users-router');
 const authRouter = require('./auth/auth-router');
 const dbConnection = require('./data/db-config');
@@ -11,6 +12,7 @@ const authenticate = require('./auth/requires-auth');
 server.use(express.json());
 server.use(morgan());
 server.use(helmet());
+server.use(cors());
 
                                             //session
 const session = require("express-session");
