@@ -11,7 +11,7 @@ exports.up = function(knex) {
       .createTable('student', tbl => {
         tbl.increments();
         tbl.string('name').notNullable();
-        tbl.string('email', 100).nullable()
+        tbl.string('email', 100).nullable();
         tbl.string('class').nullable();
       })
       //make a card
