@@ -3,8 +3,8 @@ const db = require('../data/db-config');
 //GETS ONLY
 const getAllProjects = () => {
     return db('projects')
-    .join("students", "students.name", "projects.student_name")
-    .select("projects.project_name", "projects.student_name", "projects.project_type", "projects.desc", "projects.completed")
+    .join("students", "students.id", "projects.student_id")
+    .select("projects.project_name", "projects.student_id", "projects.project_type", "projects.desc", "projects.completed")
 }
 const getAllTeachers = () => {
     return db('teachers')

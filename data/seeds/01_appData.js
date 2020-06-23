@@ -18,16 +18,16 @@ exports.seed = function(knex) {
       })
       .then(function () {
         return knex('projects').insert([
-          {project_name: "Exploring the world of software", student_name: 'Elon',
+          {project_name: "Exploring the world of software", student_id: '1',
           project_type: "review", desc: "we will be discussing the question on the test",
           completed: false},
-          {project_name: "Test on Computer Science", student_name: 'Jimmy',
+          {project_name: "Test on Computer Science", student_id: '2',
           project_type: "Test", desc: "Test on Computer Science",
           completed: false},
-          {project_name: "Test on data schema", student_name: 'Nicholas',
+          {project_name: "Test on data schema", student_id: '3',
           project_type: "Test", desc: "Test on data schema",
           completed: false},
-          {project_name: "Review on Data Migrations/Deployment", student_name: 'Patrick',
+          {project_name: "Review on Data Migrations/Deployment", student_id: '4',
           project_type: "Review", desc: "Data Migrations/Deployment",
           completed: false},
         ])

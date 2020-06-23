@@ -15,16 +15,16 @@ exports.up = function(knex) {
         tbl.string('class').nullable();
         tbl.string('teacher_id').unsigned().notNullable()
         .references('id')                              
-        .inTable('teacher')
+        .inTable('teachers')
         .onDelete('CASCADE')
         .onUpdate('CASCADE');
       })
       
       .createTable('projects', tbl => {
         tbl.string('project_name').notNullable();
-        tbl.string('student_name').notNullable().unsigned()
-        .references('name')                              
-        .inTable('student')
+        tbl.string('student_id').notNullable().unsigned()
+        .references('id')                              
+        .inTable('students')
         .onDelete('CASCADE')
         .onUpdate('CASCADE');
         tbl.string('project_type').nullable();
