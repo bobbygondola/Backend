@@ -18,7 +18,12 @@ router.get('/teacher/:id/students', (req,res) => {  //working
     const id = req.params.id;
     db.getMentoredStudents(id)
     .then(students => {
-        res.status(200).json(students)
+        if (students.length > 0) {
+            res.status(200).json(students)
+        } else {
+            res.status(404).json({message: "there are no students for this teacher!"})
+        }
+        
     })
     .catch(error => {
         console.log("error geting students", error);
@@ -26,24 +31,24 @@ router.get('/teacher/:id/students', (req,res) => {  //working
     })
 })
 
-// router.get('/teacher/:id/students/:sid', (req,res) => {  
-//     const id = req.params.id;
-//     const sid = req.params.sid;
-//     db.getById(id,sid)
-//     .then(student => {
-//         if(student.length > 0){
-//             res.status(200).json(student)
-//         } else {
-//             res.status(404).json({message: "there is no such student.."})
-//         }
-//     })
-//     .catch(error => {
-//         console.log("error geting students", error);
-//         res.status(500).json({message: "We are sorry, internal server error!"})
-//     })
-// })
+router.get('/teacher/:id/students/:studentid', (req,res) => {
+    const id = req.params.id;
+    const studentid = req.params.studentid;
+    db.getById(id, studentid)
+    .then(student => {
+        if(student.length > 0){
+            res.status(200).json(student)
+        } else {
+            res.status(404).json({message: "there is no such student.."})
+        }
+    })
+    .catch(error => {
+        console.log("error geting students", error);
+        res.status(500).json({message: "We are sorry, internal server error!"})
+    })
+})
 
-router.get('/teacher/:id/students/projects', (req,res) => {
+router.get('/teacher/:id/students/projects', (req,res) => { //working all projects
     const id = req.params.id;
     db.getAllProjects(id)
     .then(projects => {
@@ -56,7 +61,7 @@ router.get('/teacher/:id/students/projects', (req,res) => {
 //END OF GETS ONLY
 
 //POSTS
-router.post('/teacher/:id/students', (req,res) => {
+router.post('/teacher/:id/students', (req,res) => {   //working post student
     const student = req.body;
     student.teacher_id = req.params.id
     db.addStudent(student)
