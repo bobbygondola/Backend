@@ -1,35 +1,35 @@
 
 exports.seed = function(knex) {
   // Deletes ALL existing entries
-  return knex('teacher').truncate()
+  return knex('teachers').truncate()
     .then(function () {
       // Inserts seed entries
-      return knex('teacher').insert([
-        {username: 'bobbyg', password:'bobbyg', department:'software'}
+      return knex('teachers').insert([
+        {username: 'bobbyg', password:'bobbyg', class:'software'}
       ])
       .then(function () {
-        return knex('student').insert([
-          {name:'Elon', email:"elonmusk@gmail.com", class: 'software'},
-          {name:'Jimmy', email:"jimmyreed@gmail.com", class: 'software'},
-          {name:'Nicholas', email:"nicholasmorgan@gmail.com", class: 'software'},
-          {name:'Patrick', email:"patrickorielly@gmail.com", class: 'software'},
-          {name:'Jeanine', email:"jeaninethegreat@gmail.com", class: 'software'}
+        return knex('students').insert([
+          {name:'Elon', email:"elonmusk@gmail.com", class: 'software', teacher_id: 1},
+          {name:'Jimmy', email:"jimmyreed@gmail.com", class: 'software', teacher_id: 1},
+          {name:'Nicholas', email:"nicholasmorgan@gmail.com", class: 'software', teacher_id: 1},
+          {name:'Patrick', email:"patrickorielly@gmail.com", class: 'software', teacher_id: 1},
+          {name:'Jeanine', email:"jeaninethegreat@gmail.com", class: 'software', teacher_id: 1}
         ])
       })
       .then(function () {
-        return knex('date').insert([
-          {date: "7/3/2020", time: '5pm',
-           desc: "we will be discussing the question on migrations",
-            "student_id": 3, "teacher_id": 1},
-            {date: "7/1/2020", time: '2pm',
-           desc: "Essay prompt question/node.js question",
-            "student_id": 2, "teacher_id": 1},
-            {date: "7/08/2020", time: '3pm',
-           desc: "Collab on backend/frontend development",
-            "student_id": 5, "teacher_id": 1},
-            {date: "7/18/2020", time: '6:30pm',
-           desc: "Appointment for help on javascript",
-            "student_id": 4, "teacher_id": 1}
+        return knex('projects').insert([
+          {project_name: "Exploring the world of software", student_name: 'Elon',
+          project_type: "review", desc: "we will be discussing the question on the test",
+          completed: false},
+          {project_name: "Test on Computer Science", student_name: 'Jimmy',
+          project_type: "Test", desc: "Test on Computer Science",
+          completed: false},
+          {project_name: "Test on data schema", student_name: 'Nicholas',
+          project_type: "Test", desc: "Test on data schema",
+          completed: false},
+          {project_name: "Review on Data Migrations/Deployment", student_name: 'Patrick',
+          project_type: "Review", desc: "Data Migrations/Deployment",
+          completed: false},
         ])
       })
     });

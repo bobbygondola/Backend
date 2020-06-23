@@ -35,6 +35,20 @@ router.get('/students', (req,res) => {
     })
 })
 
+//new addition
+// router.get('/teacher/:id/students', (req,res) => {
+//     const id = req.params.id;
+//     db.getClass(id)
+//     .then(students => {
+//         if (students.length > 0) {
+//             res.status(200).json(students)
+//         } else {
+//             res.status(404).json({message: "No students in your class!"})
+//         }
+        
+//     })
+// })
+
 router.get('/students/:id', (req,res) => {
     const id = req.params.id;
     db.getById(id)
