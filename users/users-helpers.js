@@ -1,10 +1,10 @@
 const db = require('../data/db-config');
 
 //GETS ONLY
-const getAllProjects = () => {
+const getAllProjects = (id) => {
     return db('projects')
     .join("students", "students.id", "projects.student_id")
-    .select("projects.project_name", "projects.student_id", "projects.project_type", "projects.desc", "projects.completed")
+    .select("projects.project_name", "projects.student_id", "students.name", "projects.project_type", "projects.desc", "projects.completed")
 }
 const getAllTeachers = () => {
     return db('teachers')

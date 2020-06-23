@@ -41,6 +41,7 @@ are baseUrl + endpoint
 | ------------------- | ---------- | ---------------------------------------------- |
 | /api/users/teachers | .get       | gets a list of teachers/accounts in the sytem. |
 | /api/users/teacher/:id/students| .get| gets a list of all students you/professor is mentoring. |
+| /teacher/:id/students/projects | .get| gets a list of all projects you must attend to with your specific students|
 
 # .post Endpoints
 
@@ -48,7 +49,6 @@ are baseUrl + endpoint
 | ------------------- | ---------- | --------------------------------------------------- |
 | /api/users/teacher/:id/students| .post | needs.. name, email, subject, teacher_id  |
 
-- please find by teacher\_ id and student_id for making appointments for now
 
 # .delete Endpoints
 
