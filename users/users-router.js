@@ -2,17 +2,6 @@ const db = require('./users-helpers');
 const router = require('express').Router();
 
 //GETS ONLY
-router.get('/dates', (req,res) => {
-    db.getAllDates()
-    .then(dates => {
-        res.status(200).json(dates)
-    })
-    .catch(error => {
-        console.log("error geting dates", error);
-        res.status(500).json({message: "We are sorry, internal server error!"})
-    })
-})
-
 router.get('/teachers', (req,res) => {
     db.getAllTeachers()
     .then(teachers => {
@@ -24,8 +13,9 @@ router.get('/teachers', (req,res) => {
     })
 })
 
-router.get('/students', (req,res) => {
-    db.getAllStudents()
+router.get('/teacher/:id/students', (req,res) => {
+    const id = req.params.id;
+    db.getMentoredStudents(id)
     .then(students => {
         res.status(200).json(students)
     })
