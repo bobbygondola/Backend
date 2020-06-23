@@ -28,7 +28,17 @@ const addStudent = (student) => {
     .insert(student, "id")
     .orderBy("id")
 }
+const addProject = (project, id) => {
+    return db('projects')
+    .join("students", "students.id", "projects.student_id")
+    .select("projects.project_name", "projects.student_id", "students.name", "projects.project_type", "projects.desc", "projects.completed")
+    .insert(project)
+    .where({student_id:id})
+}   
+
 //DELETES ONLY
+
+//from class all projects //TEST IT
 const deleteStudent = (id) => {
     return db("students")
     .where({id})
@@ -41,5 +51,6 @@ module.exports = {
     getMentoredStudents,
     addStudent,
     deleteStudent,
-    getById
+    getById,
+    addProject
 }

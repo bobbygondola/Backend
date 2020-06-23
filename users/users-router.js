@@ -2,7 +2,7 @@ const db = require('./users-helpers');
 const router = require('express').Router();
 
 //GETS ONLY
-router.get('/teachers', (req,res) => {  //working
+router.get('/teachers', (req,res) => {  //working all teachers
     db.getAllTeachers()
     .then(teachers => {
         res.status(200).json(teachers)
@@ -14,7 +14,7 @@ router.get('/teachers', (req,res) => {  //working
 })
 
 //get all students for teacher
-router.get('/teacher/:id/students', (req,res) => {  //working
+router.get('/teacher/:id/students', (req,res) => {  //working all students
     const id = req.params.id;
     db.getMentoredStudents(id)
     .then(students => {
@@ -46,7 +46,7 @@ router.get('/teacher/:id/students/projects', (req,res) => { //working all projec
     })
 })
 
-router.get('/teacher/:id/students/:studentid', (req,res) => {
+router.get('/teacher/:id/students/:studentid', (req,res) => {   //working specific student
     const id = req.params.id;
     const studentid = req.params.studentid;
     db.getById(id, studentid)
@@ -67,9 +67,20 @@ router.get('/teacher/:id/students/:studentid', (req,res) => {
 //END OF GETS ONLY
 
 //POSTS
+
+router.post('/teacher/:id/students/projects', (req,res) => {
+    const project = req.body;
+    const id = req.params.id;
+    db.addProject(project, id)
+    .then(project => {
+        console.log(project)
+        res.status(201).json({message: "new project created"})
+    })
+})
+
 router.post('/teacher/:id/students', (req,res) => {   //working post student
     const student = req.body;
-    student.teacher_id = req.params.id
+    student.teacher_id = req.params.id;
     db.addStudent(student)
     .then(newStudent => {
         console.log("student added", newStudent)
@@ -82,7 +93,6 @@ router.post('/teacher/:id/students', (req,res) => {   //working post student
 })
 
 //DELETES
-
 router.delete('/students/:id', (req,res) => { //deletes student and all dates appt to
     const id = req.params.id;
     db.deleteStudent(id)
