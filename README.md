@@ -43,6 +43,7 @@ are baseUrl + endpoint
 | /api/users/teacher/:id/students| .get| gets a list of all students you/professor is mentoring. |
 | /api/users/teacher/:id/students/:studentid | .get | gets specific student from specific teacher|
 | /api/users/teacher/:id/students/projects | .get| gets a list of all projects you must attend to with your specific students|
+|^.map over that data for dashboard projects!^|
 
 
 # .post Endpoints
@@ -58,4 +59,4 @@ are baseUrl + endpoint
 
 | field                   | axios .delete | required field data!                                      |
 | ----------------------- | ------------- | --------------------------------------------------- |
-^wait on it^
+|^wait on it^|
