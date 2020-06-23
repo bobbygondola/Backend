@@ -5,6 +5,7 @@ const getAllProjects = (id) => {
     return db('projects')
     .join("students", "students.id", "projects.student_id")
     .select("projects.project_name", "projects.student_id", "students.name", "projects.project_type", "projects.desc", "projects.completed")
+    .where({teacher_id:id})
 }
 const getAllTeachers = () => {
     return db('teachers')
@@ -14,12 +15,11 @@ const getMentoredStudents = (id) => {
     return db('students')
     .where({teacher_id:id})
 }
-// const getById = (id,sid) => {
-//     return db("students")
-//     .where({teacher_id:id})
-//     .where("student.id",sid)
-// }
-
+const getById = (id, sid) => {
+    return db("students")
+    .where({teacher_id:id})
+    .where("id", sid)
+}
 //END OF GETS ONLY
 
 //POSTS ONLY
@@ -41,4 +41,5 @@ module.exports = {
     getMentoredStudents,
     addStudent,
     deleteStudent,
+    getById
 }
