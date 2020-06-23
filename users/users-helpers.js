@@ -5,7 +5,7 @@ const getAllProjects = (id) => {
     return db('projects')
     .join("students", "students.id", "projects.student_id")
     .select("projects.project_name", "projects.student_id", "students.name", "projects.project_type", "projects.desc", "projects.completed")
-    .where({teacher_id:id})
+
 }
 const getAllTeachers = () => {
     return db('teachers')
