@@ -1,23 +1,23 @@
 const db = require('../data/db-config');
 
 //GETS ONLY
-const getAllDates = () => {
-    return db('date')
-    .join("student", "student.id", "date.student_id")
-    .join("teacher", "teacher.id", "date.teacher_id")
-    .select("date.date", "date.time", "date.desc", "date.student_id", "student.name", "teacher.username")
+const getAllProjects = () => {
+    return db('projects')
+    .join("students", "students.name", "projects.student_name")
+    .select("projects.project_name", "projects.student_name", "projects.project_type", "projects.desc", "projects.completed")
 }
 const getAllTeachers = () => {
-    return db('teacher')
-    .select("teacher.username", "teacher.department")
+    return db('teachers')
+    .select("teachers.username", "teachers.class")
 }
-const getAllStudents = () => {
+const getMentoredStudents = (id) => {
     return db('student')
+    .where({teacher_id:id})
 }
-const getById = (id) => {
-    return db('student')
-    .where({id})
-}
+// const getById = (id) => {
+//     return db('student')
+//     .where({id})
+// }
 //END OF GETS ONLY
 
 //POSTS ONLY
@@ -26,17 +26,7 @@ const addStudent = (student) => {
     .insert(student)
     .orderBy("id")
 }
-const addDate = (details) => {
-    return db('date')
-    .insert(details)
-    .orderBy("id")
-}
 //DELETES ONLY
-const deleteDate = (id) => {
-    return db('date')
-    .where({id})
-    .del()
-}
 const deleteStudent = (id) => {
     return db("student")
     .where({id})
@@ -44,12 +34,9 @@ const deleteStudent = (id) => {
 }
 
 module.exports = {
-    getAllDates,
+    getAllProjects,
     getAllTeachers,
-    getAllStudents,
+    getMentoredStudents,
     addStudent,
-    addDate,
-    getById,
-    deleteDate,
     deleteStudent
 }
