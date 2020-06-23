@@ -5,14 +5,14 @@ exports.up = function(knex) {
         tbl.increments();
         tbl.string('username', 100).notNullable().index();
         tbl.string('password', 100).notNullable().index();
-        tbl.string('class').nullable();
+        tbl.string('subject').nullable();
       })
       //add to the card                                 //add email, projects, _> projectname: duedate:
       .createTable('students', tbl => {
         tbl.increments();
         tbl.string('name').notNullable();
         tbl.string('email', 100).nullable();
-        tbl.string('class').nullable();
+        tbl.string('subject').nullable();
         tbl.string('teacher_id').unsigned().notNullable()
         .references('id')                              
         .inTable('teachers')

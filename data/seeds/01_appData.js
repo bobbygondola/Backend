@@ -5,15 +5,15 @@ exports.seed = function(knex) {
     .then(function () {
       // Inserts seed entries
       return knex('teachers').insert([
-        {username: 'bobbyg', password:'bobbyg', class:'software'}
+        {username: 'bobbyg', password:'bobbyg', subject:'software'}
       ])
       .then(function () {
         return knex('students').insert([
-          {name:'Elon', email:"elonmusk@gmail.com", class: 'software', teacher_id: 1},
-          {name:'Jimmy', email:"jimmyreed@gmail.com", class: 'software', teacher_id: 1},
-          {name:'Nicholas', email:"nicholasmorgan@gmail.com", class: 'software', teacher_id: 1},
-          {name:'Patrick', email:"patrickorielly@gmail.com", class: 'software', teacher_id: 1},
-          {name:'Jeanine', email:"jeaninethegreat@gmail.com", class: 'software', teacher_id: 1}
+          {name:'Elon', email:"elonmusk@gmail.com", subject: 'software', teacher_id: 1},
+          {name:'Jimmy', email:"jimmyreed@gmail.com", subject: 'software', teacher_id: 1},
+          {name:'Nicholas', email:"nicholasmorgan@gmail.com", subject: 'software', teacher_id: 1},
+          {name:'Patrick', email:"patrickorielly@gmail.com", subject: 'software', teacher_id: 1},
+          {name:'Jeanine', email:"jeaninethegreat@gmail.com", subject: 'software', teacher_id: 1}
         ])
       })
       .then(function () {

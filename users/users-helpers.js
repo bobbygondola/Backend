@@ -8,24 +8,29 @@ const getAllProjects = () => {
 }
 const getAllTeachers = () => {
     return db('teachers')
-    .select("teachers.username", "teachers.class")
+    .select("teachers.username", "teachers.subject")
 }
 const getMentoredStudents = (id) => {
-    return db('student')
+    return db('students')
     .where({teacher_id:id})
 }
+// const getById = (id,sid) => {
+//     return db("students")
+//     .where({teacher_id:id})
+//     .where("student.id",sid)
+// }
 
 //END OF GETS ONLY
 
 //POSTS ONLY
 const addStudent = (student) => {
-    return db('student')
+    return db('students')
     .insert(student)
     .orderBy("id")
 }
 //DELETES ONLY
 const deleteStudent = (id) => {
-    return db("student")
+    return db("students")
     .where({id})
     .del()
 }

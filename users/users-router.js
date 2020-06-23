@@ -2,7 +2,7 @@ const db = require('./users-helpers');
 const router = require('express').Router();
 
 //GETS ONLY
-router.get('/teachers', (req,res) => {
+router.get('/teachers', (req,res) => {  //working
     db.getAllTeachers()
     .then(teachers => {
         res.status(200).json(teachers)
@@ -13,7 +13,8 @@ router.get('/teachers', (req,res) => {
     })
 })
 
-router.get('/teacher/:id/students', (req,res) => {
+//get all students for teacher
+router.get('/teacher/:id/students', (req,res) => {  //working
     const id = req.params.id;
     db.getMentoredStudents(id)
     .then(students => {
@@ -25,35 +26,22 @@ router.get('/teacher/:id/students', (req,res) => {
     })
 })
 
-//new addition
-// router.get('/teacher/:id/students', (req,res) => {
+// router.get('/teacher/:id/students/:sid', (req,res) => {  
 //     const id = req.params.id;
-//     db.getClass(id)
-//     .then(students => {
-//         if (students.length > 0) {
-//             res.status(200).json(students)
+//     const sid = req.params.sid;
+//     db.getById(id,sid)
+//     .then(student => {
+//         if(student.length > 0){
+//             res.status(200).json(student)
 //         } else {
-//             res.status(404).json({message: "No students in your class!"})
+//             res.status(404).json({message: "there is no such student.."})
 //         }
-        
+//     })
+//     .catch(error => {
+//         console.log("error geting students", error);
+//         res.status(500).json({message: "We are sorry, internal server error!"})
 //     })
 // })
-
-router.get('/students/:id', (req,res) => {
-    const id = req.params.id;
-    db.getById(id)
-    .then(student => {
-        if(student.length > 0){
-            res.status(200).json(student)
-        } else {
-            res.status(404).json({message: "there is no such student.."})
-        }
-    })
-    .catch(error => {
-        console.log("error geting students", error);
-        res.status(500).json({message: "We are sorry, internal server error!"})
-    })
-})
 //END OF GETS ONLY
 
 //POSTS
@@ -84,18 +72,6 @@ router.post('/dates', (req,res) => {
 })
 
 //DELETES
-router.delete('/dates/:id', (req,res) => {
-    const id = req.params.id;
-    db.deleteDate(id)
-    .then(deleted => {
-        console.log("date deleted", deleted)
-        res.status(204).json({message: "Sucessfully Deleted Appt."})
-    })
-    .catch(error => {
-        console.log("error deleting date", error);
-        res.status(500).json({message: "We are sorry, internal server error!"})
-    })
-})
 
 router.delete('/students/:id', (req,res) => { //deletes student and all dates appt to
     const id = req.params.id;
