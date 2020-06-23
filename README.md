@@ -39,15 +39,13 @@ are baseUrl + endpoint
 
 | field               | axios type | required data!                                 |
 | ------------------- | ---------- | ---------------------------------------------- |
-| /api/users/dates    | .get       | gets a list of all APPTS                       |
 | /api/users/teachers | .get       | gets a list of teachers/accounts in the sytem. |
+| /api/users/teacher/:id/students| .get| gets a list of all students you/professor is mentoring. |
 
 # .post Endpoints
 
 | field               | axios type | required data!                                      |
 | ------------------- | ---------- | --------------------------------------------------- |
-| /api/users/students | .post      | name, email class, required!                        |
-| /api/users/dates    | .post      | date, time, desc, student_id, teacher_id required!! |
 
 - please find by teacher\_ id and student_id for making appointments for now
 
@@ -55,5 +53,4 @@ are baseUrl + endpoint
 
 | field                   | axios .delete | required data!                                      |
 | ----------------------- | ------------- | --------------------------------------------------- |
-| /api/users/dates/:id    | .delete       | deletes appointment card.                           |
 | /api/users/students/:id | .delete       | deletes student and all appt dates for the student. |
