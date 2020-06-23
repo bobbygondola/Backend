@@ -49,9 +49,9 @@ are baseUrl + endpoint
 
 | field               | axios type | required field data!                                      |
 | ------------------- | ---------- | --------------------------------------------------- |
-| /api/users/teacher/:id/students| .post | needs.. name, email, subject, teacher_id  |
+| /api/users/teacher/:id/students| .post | needs.. "name", "email", "subject", "teacher_id"(just a string)  |
 | /api/users/teacher/:id/students/projects | .post | needs.. "project_name", "student_id", "project_type", "desc", "completed"(boolean) |
-^that would be the best data to .map over to display "projects" on a dashbaord"^
+^that would be the best data to .map over to display "projects" on a dashboard"^
 
 
 # .delete Endpoints
