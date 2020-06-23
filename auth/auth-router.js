@@ -9,7 +9,7 @@ function createToken(user) {
   const payload = {
     subject: user.id,
     username: user.username,
-    department: user.department,
+    subject: user.subject,
   };
   const secret = process.env.JWT_SECRET || "Neuralink";
   const options = {
