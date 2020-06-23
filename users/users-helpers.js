@@ -40,5 +40,5 @@ module.exports = {
     getAllTeachers,
     getMentoredStudents,
     addStudent,
-    deleteStudent
+    deleteStudent,
 }
