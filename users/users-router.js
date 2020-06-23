@@ -42,6 +42,17 @@ router.get('/teacher/:id/students', (req,res) => {  //working
 //         res.status(500).json({message: "We are sorry, internal server error!"})
 //     })
 // })
+
+router.get('/teacher/:id/students/projects', (req,res) => {
+    const id = req.params.id;
+    db.getAllProjects(id)
+    .then(projects => {
+        res.status(200).json(projects)
+    }).catch(error => {
+        console.log("error geting projects", error);
+        res.status(500).json({message: "We are sorry, internal server error!"})
+    })
+})
 //END OF GETS ONLY
 
 //POSTS
