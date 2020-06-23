@@ -45,8 +45,9 @@ router.get('/teacher/:id/students', (req,res) => {  //working
 //END OF GETS ONLY
 
 //POSTS
-router.post('/students', (req,res) => {
+router.post('/teacher/:id/students', (req,res) => {
     const student = req.body;
+    student.teacher_id = req.params.id
     db.addStudent(student)
     .then(newStudent => {
         console.log("student added", newStudent)
@@ -54,19 +55,6 @@ router.post('/students', (req,res) => {
     })
     .catch(error => {
         console.log("error posting student", error);
-        res.status(500).json({message: "We are sorry, internal server error!"})
-    })
-})
-
-router.post('/dates', (req,res) => {
-    const newDate = req.body;
-    db.addDate(newDate)
-    .then(newDate => {
-        console.log("date added", newDate)
-        res.status(201).json({message: "new date added!"})
-    })
-    .catch(error => {
-        console.log("error posting date", error);
         res.status(500).json({message: "We are sorry, internal server error!"})
     })
 })

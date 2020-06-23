@@ -25,7 +25,7 @@ const getMentoredStudents = (id) => {
 //POSTS ONLY
 const addStudent = (student) => {
     return db('students')
-    .insert(student)
+    .insert(student, "id")
     .orderBy("id")
 }
 //DELETES ONLY
@@ -40,5 +40,5 @@ module.exports = {
     getAllTeachers,
     getMentoredStudents,
     addStudent,
-    deleteStudent
+    deleteStudent,
 }

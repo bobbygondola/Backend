@@ -46,6 +46,7 @@ are baseUrl + endpoint
 
 | field               | axios type | required data!                                      |
 | ------------------- | ---------- | --------------------------------------------------- |
+| /api/users/teacher/:id/students| .post | needs.. name, email, subject, teacher_id  |
 
 - please find by teacher\_ id and student_id for making appointments for now
 
