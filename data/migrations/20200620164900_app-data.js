@@ -22,6 +22,7 @@ exports.up = function(knex) {
       })
       
       .createTable('projects', tbl => {
+        tbl.increments();
         tbl.string('project_name').notNullable();
         tbl.string('due_date').notNullable();
         tbl.string('student_id').notNullable().unsigned()

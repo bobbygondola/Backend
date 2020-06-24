@@ -4,7 +4,7 @@ const db = require('../data/db-config');
 const getAllProjects = (id) => {
     return db('projects')
     .join("students", "students.id", "projects.student_id")
-    .select("projects.project_name", "projects.due_date", "projects.student_id", "students.name", "projects.project_type", "projects.desc", "projects.completed")
+    .select("projects.id","projects.project_name", "projects.due_date", "projects.student_id", "students.name", "projects.project_type", "projects.desc", "projects.completed")
 
 }
 const getAllTeachers = () => {
@@ -45,11 +45,12 @@ const editStudent = (id,studentId,changes) => {
     .where({teacher_id:id})
     .where("id", studentId)
 }
-// const editProject = (id, changes) => {
-//     return db('projects')
-//     .update(changes)
-//     .where({id})
-// }
+const editProject = (id, projectId, changes) => {
+    return db('projects')
+    .update(changes)
+    .where({id})
+    .where("projects.id", projectId)
+}
 
 
 
@@ -72,5 +73,5 @@ module.exports = {
     addProject,
     deleteStudent,//and projects
     editStudent,
-    //edit project add
+    editProject
 }
