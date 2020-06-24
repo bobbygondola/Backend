@@ -100,14 +100,29 @@ router.delete('/teacher/:id/students/:studentId', (req,res) => { //deletes stude
     db.deleteStudent(id, studentId)
     .then(deleted => {
         console.log("student deleted", deleted)
-        res.status(204).json({message: "Sucessfully Deleted Student."})
+        res.status(200).json({message: "Sucessfully Deleted Student."})
     })
     .catch(error => {
-        console.log("error deleting student", error);
+        console.log("error deleting student ->", error);
         res.status(500).json({message: "We are sorry, internal server error!"})
     })
 })
+
+router.delete('/teacher/:id/students/projects/:projectId', (req,res) => {
+    const id = req.params.id;
+    const projectId = req.params.projectId;
+    db.deleteProject(id, projectId)
+    .then(deleted => {
+        console.log("deleted project ->", deleted)
+        res.status(200).json({message: "Successfully Deleted Project!"})
+    }).catch(error => {
+        console.log("error deleting project", error);
+        res.status(500).json({message: "We are sorry, internal server error!"})
+    })
+})
+
 //PUTS
+
 router.put('/teacher/:id/students/:studentId', (req,res) => {
     const id = req.params.id;
     const studentId = req.params.studentId;

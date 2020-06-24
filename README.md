@@ -1,6 +1,5 @@
 # Backend
-
-Repository for Backend
+-Hello, this is the backend for IOS
 This is the backend for ios and web, have fun any questions msg me!
 
 ## WELCOME!
