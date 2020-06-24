@@ -25,6 +25,11 @@ exports.up = function(knex) {
         tbl.increments();
         tbl.string('project_name').notNullable();
         tbl.string('due_date').notNullable();
+        tbl.string('teacher_id').nullable().unsigned()
+        .references('id')
+        .inTable('teachers')
+        .onDelete('CASCADE')
+        .onUpdate('CASCADE');
         tbl.string('student_id').notNullable().unsigned()
         .references('id')                              
         .inTable('students')

@@ -1,15 +1,12 @@
-# Backend
-
-Repository for Backend
-This is the backend for ios and web, have fun any questions msg me!
+# Attention
+-Hello, this is the backend for IOS and Web
+-Made by Robert Gondola + Docs!
+any questions msg me!
 
 ## WELCOME!
-
 # This is the backend for the BetterProfessor App!
-
-# The required data is what needs to be inputed, or crucial information.
-
----
+# The required data field of the docs is IMPORTANT information needed to create/update/delete data, contains crucial information.
+______________________________________________________________________________________________
 
 # keynotes
 
@@ -27,7 +24,7 @@ https://betterprofessoruni.herokuapp.com
 are baseUrl + endpoint
 
 ---
-
+_________________________________________________________________________________________________
 # login/logout Endpoints
 
 | field              | axios type | required field data!                            |
@@ -65,5 +62,7 @@ are baseUrl + endpoint
 
 | field                   | axios .delete | required field data!                                      |
 | ----------------------- | ------------- | --------------------------------------------------- |
-| /teacher/:id/students/:studentId | .delete | deleted a user, use teacherid as first id and whichever studentId you want to to delete!|
+| /api/users/teacher/:id/students/:studentId | .delete | deleted a user, use teacherid as first id and whichever studentId you want to to delete!|
+|/api/users/teacher/:id/students/projects/:projectId | .delete | deletes a project using teacherid as the first id and whichever projectId you want to to delete!
+___________________________________________________________________________________________________
 
