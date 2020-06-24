@@ -122,4 +122,19 @@ router.put('/teacher/:id/students/:studentId', (req,res) => {
     })
 })
 
+router.put('/teacher/:id/students/projects/:projectId', (req,res) => {
+    const id = req.params.id;
+    const projectId = req.params.projectId;
+    const changes = req.body;
+    db.editProject(id, projectId, changes)
+    .then(editedProject => {
+        console.log("edited project", editedProject)
+        res.status(200).json({message: "Project Updated!"})
+    }).catch(error => {
+        console.log("error editing project", error);
+        res.status(500).json({message: "We are sorry, internal server error!"})
+    })
+
+})
+
 module.exports=router;

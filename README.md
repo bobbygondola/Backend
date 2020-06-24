@@ -59,6 +59,7 @@ are baseUrl + endpoint
 | field                   | axios type | required field data!                                      |
 | ----------------------- | ------------- | --------------------------------------------------- |
 | /api/users/teacher/:id/students/:studentId | .put | edits a student, returns a success message.. needs.. all normal student info|
+| /api/users/teacher/:id/students/projects/:projectId | .put | edits a project using the teachersId(first in the endpoint), then targeting which project (:projectId). returns a success message! |
 
 # .delete Endpoints
 
