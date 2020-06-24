@@ -54,6 +54,11 @@ are baseUrl + endpoint
 | /api/users/teacher/:id/students/projects | .post | needs.. "project_name", "due_date", "student_id", "project_type", "desc", "completed"(boolean) |
 ^that would be the best data to .map over to display "projects" on a dashboard"^
 
+# .put/edit Endpoints
+
+| field                   | axios type | required field data!                                      |
+| ----------------------- | ------------- | --------------------------------------------------- |
+| /api/users/teacher/:id/students/:studentId | .put | edits a student, returns a success message.. needs.. all normal student info|
 
 # .delete Endpoints
 

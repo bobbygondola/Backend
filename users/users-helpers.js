@@ -22,6 +22,7 @@ const getById = (id, sid) => {
 }
 //END OF GETS ONLY
 
+
 //POSTS ONLY
 const addStudent = (student) => {
     return db('students')
@@ -35,16 +36,32 @@ const addProject = (project, id) => {
     .insert(project)
     .where({student_id:id})
 }   
+//end of posts
+
+//Puts only
+const editStudent = (id,studentId,changes) => {
+    return db('students')
+    .update(changes)
+    .where({teacher_id:id})
+    .where("id", studentId)
+}
+// const editProject = (id, changes) => {
+//     return db('projects')
+//     .update(changes)
+//     .where({id})
+// }
+
+
 
 //DELETES ONLY
-
-//from class all projects //TEST IT
+// deletes student and all associated projects
 const deleteStudent = (id, studentId) => {
     return db("students")
     .where({teacher_id:id})
     .where("id", studentId)
     .del()
 }
+
 
 module.exports = {
     getAllProjects,
@@ -53,7 +70,7 @@ module.exports = {
     addStudent,
     getById,
     addProject,
-    deleteStudent,
-    //delete project
-    //update project
+    deleteStudent,//and projects
+    editStudent,
+    //edit project add
 }
