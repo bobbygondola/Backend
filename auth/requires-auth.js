@@ -7,6 +7,7 @@ module.exports = (req, res, next) => {
       const secret = secrets.jwtSecret
       jwt.verify(token, secret, (err) => {
           if(err){
+              console.log(err)
               res.status(400).json({message: "access denied"})
           }else{
               next()
