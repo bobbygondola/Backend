@@ -36,7 +36,7 @@ const sessionConfig = {
   server.use(session(sessionConfig))
 
 
-server.use('/api/users', authenticate, userRouter);//for teacher/student/appts use
+server.use('/api/users', authenticate, userRouter);//for teacher/student/appts use //add auth
 server.use('/api/auth', authRouter);// for register/login/logout use
 
 
