@@ -4,17 +4,16 @@ const secrets = require("../config/secrets")
 module.exports = (req, res, next) => {
   const token = req.headers.authorization;
   if (token) {
-    jwt.verify(token, secrets.jwtSecret, (error, decodedToken) => {
-      if (error) {
-        res.status(401).json({ error: "You must be logged in to do this" });
-      } 
-      else {
-        req.jwt = decodedToken;
-        next();
-      }
-    });
+      const secret = secrets.jwtSecret
+      jwt.verify(token, secret, (err) => {
+          if(err){
+              res.status(400).json({message: "access denied"})
+          }else{
+              next()
+          }
+      })
   } else {
-    res.status(401).json({ error: "You must be logged in to do this" });
+      res.status(401).json({message: "please provide your credentials"})
   }
 };
 
