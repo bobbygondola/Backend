@@ -1,4 +1,5 @@
 const db = require('./users-helpers');
+const { editStudent } = require('./users-helpers');
 const router = require('express').Router();
 
 //GETS ONLY
@@ -106,6 +107,19 @@ router.delete('/teacher/:id/students/:studentId', (req,res) => { //deletes stude
         res.status(500).json({message: "We are sorry, internal server error!"})
     })
 })
-//NEEDS PUT!!!!!!!!!!!!!
+//PUTS
+router.put('/teacher/:id/students/:studentId', (req,res) => {
+    const id = req.params.id;
+    const studentId = req.params.studentId;
+    const changes = req.body;
+    db.editStudent(id, studentId, changes)
+    .then(editedStudent => {
+        console.log(editedStudent)
+        res.status(200).json("Student Updated!")
+    }).catch(error => {
+        console.log("error editing student", error);
+        res.status(500).json({message: "We are sorry, internal server error!"})
+    })
+})
 
 module.exports=router;
