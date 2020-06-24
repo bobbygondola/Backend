@@ -31,7 +31,7 @@ exports.up = function(knex) {
         .onUpdate('CASCADE');
         tbl.string('project_type').nullable();
         tbl.string('desc').nullable();
-        tbl.string('completed').nullable()
+        tbl.boolean('completed').nullable()
       })
       
   };

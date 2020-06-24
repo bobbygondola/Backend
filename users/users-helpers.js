@@ -45,6 +45,11 @@ const editStudent = (id,studentId,changes) => {
     .where({teacher_id:id})
     .where("id", studentId)
 }
+// const editProject = (id, changes) => {
+//     return db('projects')
+//     .update(changes)
+//     .where({id})
+// }
 
 
 
@@ -66,6 +71,6 @@ module.exports = {
     getById,
     addProject,
     deleteStudent,//and projects
-    editStudent
-    //update project
+    editStudent,
+    //edit project add
 }
