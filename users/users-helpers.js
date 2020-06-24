@@ -4,7 +4,7 @@ const db = require('../data/db-config');
 const getAllProjects = (id) => {
     return db('projects')
     .join("students", "students.id", "projects.student_id")
-    .select("projects.project_name", "projects.student_id", "students.name", "projects.project_type", "projects.desc", "projects.completed")
+    .select("projects.project_name", "projects.due_date", "projects.student_id", "students.name", "projects.project_type", "projects.desc", "projects.completed")
 
 }
 const getAllTeachers = () => {
