@@ -39,18 +39,20 @@ const addProject = (project, id) => {
 //DELETES ONLY
 
 //from class all projects //TEST IT
-const deleteStudent = (id) => {
-    return db("students")
-    .where({id})
-    .del()
-}
+// const deleteStudent = (id) => {
+//     return db("students")
+//     .where({id})
+//     .del()
+// }
 
 module.exports = {
     getAllProjects,
     getAllTeachers,
     getMentoredStudents,
     addStudent,
-    deleteStudent,
     getById,
     addProject
+    //delete student
+    //delete project
+    //update project
 }

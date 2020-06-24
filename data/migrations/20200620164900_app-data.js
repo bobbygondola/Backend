@@ -11,6 +11,7 @@ exports.up = function(knex) {
       .createTable('students', tbl => {
         tbl.increments();
         tbl.string('name').notNullable();
+        tbl.string('img_url').nullable();
         tbl.string('email', 100).nullable();
         tbl.string('subject').nullable();
         tbl.string('teacher_id').unsigned().notNullable()
