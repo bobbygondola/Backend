@@ -93,9 +93,10 @@ router.post('/teacher/:id/students', (req,res) => {   //working post student
 })
 
 //DELETES
-router.delete('/students/:id', (req,res) => { //deletes student and all dates appt to
+router.delete('/teacher/:id/students/:studentId', (req,res) => { //deletes student and all dates appt to
     const id = req.params.id;
-    db.deleteStudent(id)
+    const studentId = req.params.studentId;
+    db.deleteStudent(id, studentId)
     .then(deleted => {
         console.log("student deleted", deleted)
         res.status(204).json({message: "Sucessfully Deleted Student."})

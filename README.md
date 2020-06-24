@@ -59,4 +59,5 @@ are baseUrl + endpoint
 
 | field                   | axios .delete | required field data!                                      |
 | ----------------------- | ------------- | --------------------------------------------------- |
-|^wait on it^|
+| /teacher/:id/students/:studentId | .delete | deleted a user, use teacherid as first id and whichever studentId you want to to delete!|
+
