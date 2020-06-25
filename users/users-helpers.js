@@ -5,12 +5,13 @@ const getAllProjects = (id) => {        //works
     return db('projects')
     .join("students", "students.id", "projects.student_id")
     .join("teachers", "teachers.id", "students.teacher_id")
+    .where("teachers.id", id)
     .select("projects.id","students.teacher_id", "projects.student_id", "students.name", "projects.project_name", "projects.due_date", "projects.project_type", "projects.desc", "projects.completed")
 
 }
 const getAllTeachers = () => {          //works
     return db('teachers')
-    .select("teachers.username", "teachers.subject")
+    .select("teachers.id", "teachers.username", "teachers.subject")
 }
 const getMentoredStudents = (id) => {   //works
     return db('students')
