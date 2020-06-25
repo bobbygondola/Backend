@@ -65,7 +65,7 @@ const deleteStudent = (id, studentId) => {          //works
 }
 const deleteProject = (id, projectId) => {          //dont work *********************
     return db('projects')
-    .where("teacher_id", id)
+    .where({teacher_id:id})
     .where("id", projectId)
     .del()
 }
