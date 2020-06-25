@@ -2,22 +2,22 @@ const db = require('../data/db-config');
 const { join } = require('../data/db-config');
 
 //GETS ONLY
-const getAllProjects = (id) => {
+const getAllProjects = (id) => {        //works
     return db('projects')
     .join("students", "students.id", "projects.student_id")
     .join("teachers", "teachers.id", "students.teacher_id")
     .select("projects.id","students.teacher_id", "projects.student_id", "students.name", "projects.project_name", "projects.due_date", "projects.project_type", "projects.desc", "projects.completed")
 
 }
-const getAllTeachers = () => {
+const getAllTeachers = () => {          //works
     return db('teachers')
     .select("teachers.username", "teachers.subject")
 }
-const getMentoredStudents = (id) => {
+const getMentoredStudents = (id) => {   //works
     return db('students')
     .where({teacher_id:id})
 }
-const getById = (id, sid) => {
+const getById = (id, sid) => {          //works
     return db("students")
     .where({teacher_id:id})
     .where("id", sid)
@@ -26,12 +26,12 @@ const getById = (id, sid) => {
 
 
 //POSTS ONLY
-const addStudent = (student) => {
+const addStudent = (student) => {       //works
     return db('students')
     .insert(student, "id")
     .orderBy("id")
 }
-const addProject = (project, id) => {
+const addProject = (project, id) => {   //works
     return db('projects')
     .join("students", "students.id", "projects.student_id")
     .select("projects.project_name", "projects.student_id", "students.name", "projects.project_type", "projects.desc", "projects.completed")
@@ -41,32 +41,33 @@ const addProject = (project, id) => {
 //end of posts
 
 //Puts only
-const editStudent = (id,studentId,changes) => {
+const editStudent = (id,studentId,changes) => { //works
     return db('students')
     .update(changes)
     .where({teacher_id:id})
     .where("id", studentId)
 }
-const editProject = (id, projectId, changes) => {
+const editProject = (id, projectId, changes) => {   //dont work **********************
     return db('projects')
+    .where("teacher_id", id)
+    .where("id", projectId)
     .update(changes)
-    .where({id})
-    .where("projects.id", projectId)
 }
 
 
 
 //DELETES ONLY
 // deletes student and all associated projects
-const deleteStudent = (id, studentId) => {
+const deleteStudent = (id, studentId) => {          //works
     return db("students")
     .where({teacher_id:id})
     .where("id", studentId)
     .del()
 }
-const deleteProject = (id, projectId) => {
+const deleteProject = (id, projectId) => {          //dont work *********************
     return db('projects')
-    .where("completed", true)
+    .where("teacher_id", id)
+    .where("id", projectId)
     .del()
 }
 
