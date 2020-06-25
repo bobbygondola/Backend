@@ -117,13 +117,8 @@ router.delete('/teacher/:id/students/projects/:projectId', (req,res) => { //NOT 
     const projectId = req.params.projectId;
     db.deleteProject(id, projectId)
     .then(deleted => {
-        if(deleted.length > 0){
             console.log("deleted project ->", deleted)
         res.status(200).json({message: "Successfully Deleted Project!"})
-        }else{
-            console.log("deleted project ->", deleted)
-            res.status(404).json({message: "Successfully Deleted Project!"})
-        }
     }).catch(error => {
         console.log("error deleting project", error);
         res.status(500).json({message: "We are sorry, internal server error!"})
@@ -152,13 +147,8 @@ router.put('/teacher/:id/students/projects/:projectId', (req,res) => {      //wo
     const changes = req.body;
     db.editProject(id, projectId, changes)
     .then(editedProject => {
-        if (editedProject.length > 0) {
             console.log("edited project ->", editedProject)
             res.status(200).json({message: "Project Updated!"})
-        } else {
-            console.log("edited project --->", editedProject)
-            res.status(404).json({message: "Project Updated!"})
-        }
     }).catch(error => {
         console.log("error editing project", error);
         res.status(500).json({message: "We are sorry, internal server error!"})
