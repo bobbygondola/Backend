@@ -77,6 +77,10 @@ router.post('/teacher/:id/students/projects', (req,res) => {   //woking post pro
         console.log(project)
         res.status(201).json({message: "new project created"})
     })
+    .catch(error => {
+        console.log("error posting project", error);
+        res.status(500).json({message: "We are sorry, internal server error!"})
+    })
 })
 
 router.post('/teacher/:id/students', (req,res) => {   //working post student

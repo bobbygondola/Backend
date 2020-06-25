@@ -1,5 +1,4 @@
 const db = require('../data/db-config');
-const { join } = require('../data/db-config');
 
 //GETS ONLY
 const getAllProjects = (id) => {        //works
