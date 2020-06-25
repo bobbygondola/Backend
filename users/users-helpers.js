@@ -68,9 +68,7 @@ const editStudent = (id, studentId, changes) => {
     .where("id", studentId);
 };
 const editProject = (id, projectId, changes) => {
-  //dont work **********************
   return db("projects")
-    .where("teacher_id", id)
     .where("id", projectId)
     .update(changes);
 };
