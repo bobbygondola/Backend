@@ -7,7 +7,7 @@ exports.up = function(knex) {
         tbl.string('password', 100).notNullable().index();
         tbl.string('subject').nullable();
       })
-      //add to the card                                 //add email, projects, _> projectname: duedate:
+      //add to the card                                 
       .createTable('students', tbl => {
         tbl.increments();
         tbl.string('name').notNullable();

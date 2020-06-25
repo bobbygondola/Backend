@@ -76,11 +76,9 @@ const editProject = (id, projectId, changes) => {
 //DELETES ONLY
 // deletes student and all associated projects
 const deleteStudent = (id, studentId) => {
-  //works
   return db("students").where({ teacher_id: id }).where("id", studentId).del();
 };
 const deleteProject = (id, projectId) => {
-  //dont work *********************
   return db("projects").where("id", projectId).del();
 };
 

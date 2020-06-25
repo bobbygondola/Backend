@@ -1,6 +1,7 @@
 const jwt = require("jsonwebtoken");
 const secrets = require("../config/secrets")
 
+//for verifying token in headers
 module.exports = (req, res, next) => {
   const token = req.headers.authorization;
   if (token) {
@@ -18,6 +19,7 @@ module.exports = (req, res, next) => {
   }
 };
 
+//for verifying sessions/cookies
 
     // module.exports=(req,res,next) => {
     //     const logged = req.session.user;
