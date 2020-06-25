@@ -69,7 +69,7 @@ router.get('/teacher/:id/students/:studentid', (req,res) => {   //working specif
 
 //POSTS
 
-router.post('/teacher/:id/students/projects', (req,res) => {
+router.post('/teacher/:id/students/projects', (req,res) => {   //woking post project
     const project = req.body;
     const id = req.params.id;
     db.addProject(project, id)
@@ -94,7 +94,7 @@ router.post('/teacher/:id/students', (req,res) => {   //working post student
 })
 
 //DELETES
-router.delete('/teacher/:id/students/:studentId', (req,res) => { //deletes student and all dates appt to
+router.delete('/teacher/:id/students/:studentId', (req,res) => { // working deletes student and all dates appt to
     const id = req.params.id;
     const studentId = req.params.studentId;
     db.deleteStudent(id, studentId)
@@ -108,13 +108,18 @@ router.delete('/teacher/:id/students/:studentId', (req,res) => { //deletes stude
     })
 })
 
-router.delete('/teacher/:id/students/projects/:projectId', (req,res) => {
+router.delete('/teacher/:id/students/projects/:projectId', (req,res) => { //NOT WORKING delete project
     const id = req.params.id;
     const projectId = req.params.projectId;
     db.deleteProject(id, projectId)
     .then(deleted => {
-        console.log("deleted project ->", deleted)
+        if(deleted.length > 0){
+            console.log("deleted project ->", deleted)
         res.status(200).json({message: "Successfully Deleted Project!"})
+        }else{
+            console.log("deleted project ->", deleted)
+            res.status(404).json({message: "Successfully Deleted Project!"})
+        }
     }).catch(error => {
         console.log("error deleting project", error);
         res.status(500).json({message: "We are sorry, internal server error!"})
@@ -123,7 +128,7 @@ router.delete('/teacher/:id/students/projects/:projectId', (req,res) => {
 
 //PUTS
 
-router.put('/teacher/:id/students/:studentId', (req,res) => {
+router.put('/teacher/:id/students/:studentId', (req,res) => {       //WORKING edit student
     const id = req.params.id;
     const studentId = req.params.studentId;
     const changes = req.body;
@@ -137,14 +142,19 @@ router.put('/teacher/:id/students/:studentId', (req,res) => {
     })
 })
 
-router.put('/teacher/:id/students/projects/:projectId', (req,res) => {
+router.put('/teacher/:id/students/projects/:projectId', (req,res) => {      //working -- edit project
     const id = req.params.id;
     const projectId = req.params.projectId;
     const changes = req.body;
     db.editProject(id, projectId, changes)
     .then(editedProject => {
-        console.log("edited project", editedProject)
-        res.status(200).json({message: "Project Updated!"})
+        if (editedProject.length > 0) {
+            console.log("edited project ->", editedProject)
+            res.status(200).json({message: "Project Updated!"})
+        } else {
+            console.log("edited project --->", editedProject)
+            res.status(404).json({message: "Project Updated!"})
+        }
     }).catch(error => {
         console.log("error editing project", error);
         res.status(500).json({message: "We are sorry, internal server error!"})
