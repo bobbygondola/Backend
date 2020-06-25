@@ -1,15 +1,15 @@
-const knex = require('knex');
-const knexConfig = require('../knexfile');
+//connection for sqlite deployment
+const knex = require("knex");
+const knexConfig = require("../knexfile");
 const environment = process.env.NODE_ENV;
 module.exports = knex(knexConfig[environment]);
 
-////testing
+// //connection for testing
 // const knex = require('knex');
 // const knexConfig = require('../knexfile');
 // module.exports = knex(knexConfig.development);
 
-
-//connection to Database FOR PG ADMIN
+// //connection to Database FOR PG ADMIN
 // const knex = require('knex');
 // const config = require('../knexfile');
 // const environment = process.env.ENVIRONMENT || 'development';

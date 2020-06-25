@@ -1,6 +1,7 @@
 const supertest = require('supertest');
 const server = require('./server');
 const db = require('./data/db-config');
+const { request } = require('./server');
 
 describe('server.js.. / endpoint', () => {
     //CHECKING STATUS CODE!
@@ -12,7 +13,7 @@ describe('server.js.. / endpoint', () => {
     });
 })
 
-describe('checking JSON language', () => {
+describe('checking JSON landguage', () => {
     //CHECKING TYPE OF LANGUAGE
     it('should be using JSON', () => {
         return supertest(server).get('/')
@@ -59,9 +60,9 @@ describe('Auth Router Endpoints', () => {
     it("/register invalid, return 404", () => {
         return supertest(server)
             .post("/api/auth/register")                   
-            .send({ username: 'false', password: "test"})
+            .send({ username: 'false', password: 3})
             .then(res => {
-            expect(res.status).toBe(404);
+            expect(res.status).toBe(500);
         });
     });
 
@@ -75,7 +76,7 @@ describe('Auth Router Endpoints', () => {
     } )
     ///////////END OF REGISTER
 })
-
+    //////////LOGIN
 describe('/login POST', () => {
 
     it("returns JSON", () => {
@@ -87,7 +88,7 @@ describe('/login POST', () => {
         })
     } )
     
-    it("returns JSON", () => {
+    it("logs in [success]", () => {
         return supertest(server)
         .post('/api/auth/login')
         .send({ username: 'test', password: 'test'})
@@ -107,12 +108,83 @@ describe('/login POST', () => {
     ///////////////////// LOGIN TESTS END
 })
 
+
+    //////////////USER ROUTER //needs verifiation
+
 describe("user router", () => {
-    it('teachers endpoint success', () => {
+    it('teachers endpoint [success]', () => {
         return supertest(server)
         .get('/api/users/teachers')
         .then(res => {
-            expect(res.status).toBe(200)
+            expect(res.type).toMatch(/json/i);
+        })
+    })
+
+            // it('teachers endpoint .get', () => {
+            //     return supertest(server)
+            //     .post('api/auth/login')
+            //     .send({username:"test", password:"test"})
+            //     .then(res => {
+            //         console.log("logging in res----->", res)
+            //         const token = res.body.token;
+            //         return supertest(server)
+            //         .set('authorization', token)
+            //         .get('/api/users/teachers')
+            //         .expect(res.status).toBe(200)
+            //     })
+                
+            // })
+
+    it('students endpoint [success]', () => {
+        return supertest(server)
+        .get('/api/users/teachers/1/students')
+        .then(res => {
+            expect(res.type).toMatch(/json/i);
+        })
+    })
+
+            // it('student endpoint .get', () => {
+            //     return supertest(server)
+            //     .get('/api/users/teachers/1/students')
+            //     .then(res => {
+            //         expect(res.status).toBe(401);
+            //     })
+            // })
+
+                    // it('student endpoint .POST', () => {
+                    //     return request(server)
+                    //     .post('/api/users/teacher/1/students')
+                    //     .send({
+                    //         "name": "bobbygd",
+                    //         "email": "Wei@gmeil.com",
+                    //         "subject": "softwaree",
+                    //         "teacher_id": "2"
+                    //     })
+                    //     .then(res => {
+                    //     const token = res.body.token
+                    //     return request(server)
+                    //     .set('authorization', token)
+                    //     .send({
+                    //         teacher_id: res.body.data.teacher_id,
+                            
+                    //     })
+                    //     })
+                    //     .expect(res.status).toBe(200)
+                    // })
+
+    it('projects endpoint [success]', () => {
+        return supertest(server)
+        .get('/api/users/teachers/1/projects')
+        .then(res => {
+            expect(res.type).toMatch(/json/i);
+        })
+    })
+
+    it('projects endpoint .get', () => {
+        return supertest(server)
+        .get('/api/users/teachers/1/students/projects')
+        .then(res => {
+            expect(res.status).toBe(401);
         })
     })
 })

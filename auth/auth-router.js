@@ -33,10 +33,10 @@ router.post("/register", (req, res) => {
       })
   });
 
-  //login as a teacher to manage students //NEED JWT
+  //login as a teacher to manage students
   router.post("/login", (req, res) => {
     const { username, password } = req.body;
-    // verify user password
+    // verify user exists then password
     db.login({ username })
       .then(([user]) => {
           if (user && bcryptjs.compareSync(password, user.password)) {

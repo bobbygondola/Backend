@@ -3,11 +3,11 @@ const express = require('express');
 const helmet = require('helmet');
 const server = express();
 const morgan = require('morgan');
-const cors = require('cors')
 const userRouter = require('./users/users-router');
 const authRouter = require('./auth/auth-router');
 const dbConnection = require('./data/db-config');
 const authenticate = require('./auth/requires-auth');
+const cors = require('cors')
 
 server.use(express.json());
 server.use(morgan());
@@ -36,12 +36,12 @@ const sessionConfig = {
   server.use(session(sessionConfig))
 
 
-server.use('/api/users', authenticate, userRouter);//for teacher/student/appts use //add auth
+server.use('/api/users', authenticate, userRouter);//for teacher/student data
 server.use('/api/auth', authRouter);// for register/login/logout use
 
 
-//test
-server.get('/', (req,res) => { //to test the api.. npm run server//localhost:8000
+//api test
+server.get('/', (req,res) => { //to test the api.. npm run server + //localhost:8000
     res.status(200).json(process.env.GREET)
 })
 
