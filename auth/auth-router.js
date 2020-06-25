@@ -7,7 +7,7 @@ require('dotenv').config();
 //token
 function createToken(user) {
   const payload = {
-    subject: user.id,
+    teacher_id: user.id,
     username: user.username,
     subject: user.subject,
   };
