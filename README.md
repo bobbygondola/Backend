@@ -1,28 +1,13 @@
-# Attention
-
-# Hello, this is the backend for IOS and Web
+# Attention *Docs to access the API*
 # Made by Robert Gondola
-# + Docs!
-- for questions email me!
+- for questions email me! - RobertGondolaUsA@gmail.com
 - This back-end was made with Node.js, JavaScript, Express and Jest
 
 ## WELCOME!
 
-___
-___
+### This is the Back-End for the BetterProfessor App!
 
-
-
-
-## This is the back-end for the BetterProfessor App!
-___
-
-
-
-
-
-## The "required field data" of the docs contains crucial instructions and holds IMPORTANT informaton needed to create/update/delete data. Read Carefully.
----
+### The "required field data" of the docs contains crucial instructions and holds IMPORTANT informaton needed to create/update/delete data. Read Carefully.
 
 # Keynotes
 
