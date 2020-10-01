@@ -22,9 +22,7 @@ https://betterprofessoruni.herokuapp.com
 
 # Endpoints
 
-are baseUrl + endpoint
-
----
+are BaseUrl + Endpoint
 
 ---
 
