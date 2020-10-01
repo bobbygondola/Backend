@@ -1,6 +1,6 @@
 # !Attention! *Docs to access the API*
 # Made by Robert Gondola
-- for questions email me! - RobertGondolaUsA@gmail.com
+- for questions email me! - RobertGondolaUSA@gmail.com
 - This back-end was made with Node.js, JavaScript, Express and Jest
 
 ## WELCOME!
